@@ -1,7 +1,7 @@
-<html><head><base href="https://websim.creation.engine/agrega%20un%20registro%20para%20que%20los%20usuarios%20se%20puedan%20registrar%20antes%20de%20entrar%20a%20esta%20p%C3%A1gina%20que%20diga%20bienvenidos%20a%20sal%C3%B3n%20goss%20y%20cuando%20el%20usuario%20inicie%20secci%C3%B3n%20entre%20a%20la%20p%C3%A1gina%20inicio">
+<html><head><base href="https://websim.creation.engine/inicio#inicio">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Salón Goss - Bienvenida y Registro</title>
+<title>Salón Goss - Inicio</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
 
@@ -16,222 +16,279 @@
 
     * {
         box-sizing: border-box;
+        margin: 0;
+        padding: 0;
     }
 
     body {
         font-family: 'Montserrat', sans-serif;
-        margin: 0;
-        padding: 0;
         background-color: var(--background-color);
         color: var(--text-color);
         line-height: 1.6;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
     }
 
-    .container {
-        background-color: var(--card-background);
-        border-radius: 8px;
-        box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        padding: 2rem;
-        width: 90%;
-        max-width: 400px;
-    }
-
-    h1 {
-        text-align: center;
-        color: var(--accent-color);
-        margin-bottom: 2rem;
-        font-size: 2rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-    }
-
-    label {
-        margin-top: 1rem;
-        font-weight: 300;
-    }
-
-    input {
-        padding: 0.5rem;
-        margin-top: 0.25rem;
-        border: 1px solid var(--primary-color);
-        border-radius: 4px;
-        background-color: var(--background-color);
-        color: var(--text-color);
-        font-family: 'Montserrat', sans-serif;
-    }
-
-    button {
-        margin-top: 1.5rem;
-        padding: 0.75rem;
+    header {
         background-color: var(--primary-color);
-        color: var(--text-color);
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.2s;
-        font-family: 'Montserrat', sans-serif;
+        padding: 1rem;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .logo {
+        font-size: 1.5rem;
         font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    button:hover {
-        background-color: var(--secondary-color);
-        transform: scale(1.05);
-    }
-
-    .switch-form {
-        text-align: center;
-        margin-top: 1rem;
-    }
-
-    .switch-form a {
         color: var(--accent-color);
+        text-decoration: none;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+    }
+
+    .nav-links li {
+        margin-left: 1.5rem;
+    }
+
+    .nav-links a {
+        color: var(--text-color);
         text-decoration: none;
         font-weight: 300;
         transition: color 0.3s;
     }
 
-    .switch-form a:hover {
-        color: var(--primary-color);
-    }
-
-    #error-message {
-        color: #ff0000;
-        text-align: center;
-        margin-top: 1rem;
-        font-weight: 300;
-    }
-
-    #success-message {
+    .nav-links a:hover {
         color: var(--accent-color);
+    }
+
+    main {
+        max-width: 1200px;
+        margin: 6rem auto 2rem;
+        padding: 0 1rem;
+    }
+
+    section {
+        margin-bottom: 4rem;
+    }
+
+    h1, h2 {
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    .services-grid, .prices-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .service-card, .price-card {
+        background-color: var(--card-background);
+        padding: 1.5rem;
+        border-radius: 8px;
         text-align: center;
-        margin-top: 1rem;
-        font-weight: 700;
+    }
+
+    .service-card img, .price-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        padding: 0.75rem 1.5rem;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: var(--secondary-color);
+    }
+
+    footer {
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .whatsapp-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #25D366;
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 30px;
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        box-shadow: 2px 2px 3px #999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+        background-color: #128C7E;
+    }
+
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
     }
 </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Bienvenidos a Salón Goss</h1>
-        <div id="login-form">
-            <form id="login">
-                <label for="login-email">Correo electrónico:</label>
-                <input type="email" id="login-email" required>
-                <label for="login-password">Contraseña:</label>
-                <input type="password" id="login-password" required>
-                <button type="submit">Iniciar sesión</button>
-            </form>
-            <div class="switch-form">
-                <a href="#" id="switch-to-register">¿No tienes cuenta? Regístrate</a>
+    <header>
+        <nav>
+            <a href="#" class="logo">Salón Goss</a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#precios">Precios</a></li>
+                <li><a href="https://websim.creation.engine/reserva">Reserva tu cita</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio">
+            <h1>Bienvenidos a Salón Goss</h1>
+            <p>En Salón Goss, nos dedicamos a realzar tu belleza natural y a brindarte una experiencia de cuidado personal excepcional. Nuestro equipo de estilistas expertos está listo para transformar tu look y elevar tu confianza.</p>
+            <a href="https://websim.creation.engine/reserva" class="btn">Reserva tu cita ahora</a>
+        </section>
+
+        <section id="servicios">
+            <h2>Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://example.com/corte-cabello.jpg" alt="Corte de cabello elegante" width="250" height="200">
+                    <h3>Corte de Cabello</h3>
+                    <p>Cortes personalizados para hombres y mujeres, adaptados a tu estilo y tipo de cabello.</p>
+                </div>
+                <div class="service-card">
+                    <img src="https://example.com/coloracion.jpg" alt="Coloración de cabello vibrante" width="250" height="200">
+                    <h3>Coloración</h3>
+                    <p>Desde tonos naturales hasta colores vibrantes, nuestros expertos en color harán realidad tu visión.</p>
+                </div>
+                <div class="service-card">
+                    <img src="https://example.com/tratamiento-capilar.jpg" alt="Tratamiento capilar revitalizante" width="250" height="200">
+                    <h3>Tratamientos Capilares</h3>
+                    <p>Revitaliza y nutre tu cabello con nuestros tratamientos especializados.</p>
+                </div>
+                <div class="service-card">
+                    <img src="https://example.com/maquillaje.jpg" alt="Maquillaje profesional" width="250" height="200">
+                    <h3>Maquillaje</h3>
+                    <p>Maquillaje profesional para eventos especiales o para tu día a día.</p>
+                </div>
             </div>
-        </div>
-        <div id="register-form" style="display: none;">
-            <form id="register">
-                <label for="register-name">Nombre:</label>
-                <input type="text" id="register-name" required>
-                <label for="register-email">Correo electrónico:</label>
-                <input type="email" id="register-email" required>
-                <label for="register-password">Contraseña:</label>
-                <input type="password" id="register-password" required>
-                <label for="register-confirm-password">Confirmar contraseña:</label>
-                <input type="password" id="register-confirm-password" required>
-                <button type="submit">Registrarse</button>
-            </form>
-            <div class="switch-form">
-                <a href="#" id="switch-to-login">¿Ya tienes cuenta? Inicia sesión</a>
+        </section>
+
+        <section id="precios">
+            <h2>Nuestros Precios</h2>
+            <div class="prices-grid">
+                <div class="price-card">
+                    <h3>Corte de Cabello</h3>
+                    <p>Desde $25</p>
+                </div>
+                <div class="price-card">
+                    <h3>Coloración</h3>
+                    <p>Desde $50</p>
+                </div>
+                <div class="price-card">
+                    <h3>Tratamiento Capilar</h3>
+                    <p>Desde $35</p>
+                </div>
+                <div class="price-card">
+                    <h3>Maquillaje</h3>
+                    <p>Desde $40</p>
+                </div>
             </div>
-        </div>
-        <div id="error-message"></div>
-        <div id="success-message"></div>
-    </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Salón Goss. Todos los derechos reservados.</p>
+    </footer>
+
+    <a href="https://wa.me/5353160585?text=Bienvenidos%20a%20Salón%20Goss%20en%20que%20podemos%20ayudarle" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#ffffff">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+    </a>
 
     <script>
-        const loginForm = document.getElementById('login-form');
-        const registerForm = document.getElementById('register-form');
-        const switchToRegister = document.getElementById('switch-to-register');
-        const switchToLogin = document.getElementById('switch-to-login');
-        const errorMessage = document.getElementById('error-message');
-        const successMessage = document.getElementById('success-message');
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
 
-        // Simular una base de datos de usuarios
-        let users = [];
-
-        switchToRegister.addEventListener('click', (e) => {
-            e.preventDefault();
-            loginForm.style.display = 'none';
-            registerForm.style.display = 'block';
-            errorMessage.textContent = '';
-            successMessage.textContent = '';
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
 
-        switchToLogin.addEventListener('click', (e) => {
-            e.preventDefault();
-            registerForm.style.display = 'none';
-            loginForm.style.display = 'block';
-            errorMessage.textContent = '';
-            successMessage.textContent = '';
-        });
+        // Add active class to current nav item
+        const sections = document.querySelectorAll("section");
+        const navLi = document.querySelectorAll("nav ul li");
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                    current = section.getAttribute("id");
+                }
+            });
 
-        document.getElementById('login').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-
-            const user = users.find(u => u.email === email && u.password === password);
-
-            if (user) {
-                successMessage.textContent = 'Inicio de sesión exitoso. Redirigiendo...';
-                errorMessage.textContent = '';
-                setTimeout(() => {
-                    window.location.href = 'https://websim.creation.engine/inicio';
-                }, 2000);
-            } else {
-                errorMessage.textContent = 'Correo electrónico o contraseña incorrectos';
-                successMessage.textContent = '';
-            }
-        });
-
-        document.getElementById('register').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('register-name').value;
-            const email = document.getElementById('register-email').value;
-            const password = document.getElementById('register-password').value;
-            const confirmPassword = document.getElementById('register-confirm-password').value;
-
-            if (password !== confirmPassword) {
-                errorMessage.textContent = 'Las contraseñas no coinciden';
-                successMessage.textContent = '';
-                return;
-            }
-
-            if (users.some(u => u.email === email)) {
-                errorMessage.textContent = 'Este correo electrónico ya está registrado';
-                successMessage.textContent = '';
-                return;
-            }
-
-            users.push({ name, email, password });
-            successMessage.textContent = 'Registro exitoso. Ahora puedes iniciar sesión.';
-            errorMessage.textContent = '';
-
-            // Limpiar el formulario
-            document.getElementById('register').reset();
-
-            // Cambiar al formulario de inicio de sesión después de un breve retraso
-            setTimeout(() => {
-                registerForm.style.display = 'none';
-                loginForm.style.display = 'block';
-            }, 2000);
+            navLi.forEach((li) => {
+                li.classList.remove("active");
+                if (li.querySelector("a").getAttribute("href").slice(1) === current) {
+                    li.classList.add("active");
+                }
+            });
         });
     </script>
 </body></html>
