@@ -1,7 +1,7 @@
-<html><head><base href="https://websim.creation.engine/agrega%20un%20registro%20para%20que%20los%20usuarios%20se%20puedan%20registrar%20antes%20de%20entrar%20a%20esta%20pagina%20que%20diga%20%20bienvenidos%20a%20sal%C3%B3n%20goss%20que%20los">
+<html><head><base href="https://websim.creation.engine/agrega%20un%20registro%20para%20que%20los%20usuarios%20se%20puedan%20registrar%20antes%20de%20entrar%20a%20esta%20p%C3%A1gina%20que%20diga%20bienvenidos%20a%20sal%C3%B3n%20goss%20y%20cuando%20el%20usuario%20inicie%20secci%C3%B3n%20entre%20a%20la%20p%C3%A1gina%20inicio">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Salón Goss - Registro y Bienvenida</title>
+<title>Salón Goss - Bienvenida y Registro</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
 
@@ -16,12 +16,12 @@
 
     * {
         box-sizing: border-box;
-        margin: 0;
-        padding: 0;
     }
 
     body {
         font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
         background-color: var(--background-color);
         color: var(--text-color);
         line-height: 1.6;
@@ -29,53 +29,39 @@
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        padding: 20px;
     }
 
     .container {
         background-color: var(--card-background);
         border-radius: 8px;
         box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        overflow: hidden;
-        width: 100%;
+        padding: 2rem;
+        width: 90%;
         max-width: 400px;
     }
 
-    .welcome-header {
-        background-color: var(--primary-color);
-        color: var(--text-color);
-        text-align: center;
-        padding: 20px;
-    }
-
     h1 {
+        text-align: center;
+        color: var(--accent-color);
+        margin-bottom: 2rem;
         font-size: 2rem;
-        margin-bottom: 10px;
         text-transform: uppercase;
+        letter-spacing: 2px;
     }
 
-    .welcome-message {
-        font-size: 1rem;
-        margin-bottom: 20px;
-    }
-
-    .form-container {
-        padding: 20px;
-    }
-
-    .form-group {
-        margin-bottom: 20px;
+    form {
+        display: flex;
+        flex-direction: column;
     }
 
     label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
+        margin-top: 1rem;
+        font-weight: 300;
     }
 
     input {
-        width: 100%;
-        padding: 10px;
+        padding: 0.5rem;
+        margin-top: 0.25rem;
         border: 1px solid var(--primary-color);
         border-radius: 4px;
         background-color: var(--background-color);
@@ -84,17 +70,18 @@
     }
 
     button {
-        width: 100%;
-        padding: 10px;
+        margin-top: 1.5rem;
+        padding: 0.75rem;
         background-color: var(--primary-color);
         color: var(--text-color);
         border: none;
         border-radius: 4px;
         cursor: pointer;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: bold;
-        text-transform: uppercase;
         transition: background-color 0.3s, transform 0.2s;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     button:hover {
@@ -102,142 +89,149 @@
         transform: scale(1.05);
     }
 
-    .error-message {
-        color: #ff0000;
-        margin-top: 10px;
-        text-align: center;
-        display: none;
-    }
-
-    #login-form {
-        display: none;
-    }
-
     .switch-form {
         text-align: center;
-        margin-top: 20px;
-        font-size: 0.9rem;
+        margin-top: 1rem;
     }
 
     .switch-form a {
         color: var(--accent-color);
         text-decoration: none;
-        cursor: pointer;
+        font-weight: 300;
+        transition: color 0.3s;
     }
 
     .switch-form a:hover {
-        text-decoration: underline;
+        color: var(--primary-color);
+    }
+
+    #error-message {
+        color: #ff0000;
+        text-align: center;
+        margin-top: 1rem;
+        font-weight: 300;
+    }
+
+    #success-message {
+        color: var(--accent-color);
+        text-align: center;
+        margin-top: 1rem;
+        font-weight: 700;
     }
 </style>
 </head>
 <body>
     <div class="container">
-        <div class="welcome-header">
-            <h1>Salón Goss</h1>
-            <p class="welcome-message">Bienvenidos a Salón Goss</p>
-        </div>
-        <div class="form-container">
-            <form id="register-form">
-                <div class="form-group">
-                    <label for="register-name">Nombre:</label>
-                    <input type="text" id="register-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="register-email">Correo electrónico:</label>
-                    <input type="email" id="register-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="register-password">Contraseña:</label>
-                    <input type="password" id="register-password" required>
-                </div>
-                <button type="submit">Registrarse</button>
-                <p class="error-message" id="register-error"></p>
-                <div class="switch-form">
-                    <p>¿Ya tienes una cuenta? <a id="switch-to-login">Iniciar sesión</a></p>
-                </div>
-            </form>
-
-            <form id="login-form">
-                <div class="form-group">
-                    <label for="login-email">Correo electrónico:</label>
-                    <input type="email" id="login-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="login-password">Contraseña:</label>
-                    <input type="password" id="login-password" required>
-                </div>
+        <h1>Bienvenidos a Salón Goss</h1>
+        <div id="login-form">
+            <form id="login">
+                <label for="login-email">Correo electrónico:</label>
+                <input type="email" id="login-email" required>
+                <label for="login-password">Contraseña:</label>
+                <input type="password" id="login-password" required>
                 <button type="submit">Iniciar sesión</button>
-                <p class="error-message" id="login-error"></p>
-                <div class="switch-form">
-                    <p>¿No tienes una cuenta? <a id="switch-to-register">Registrarse</a></p>
-                </div>
             </form>
+            <div class="switch-form">
+                <a href="#" id="switch-to-register">¿No tienes cuenta? Regístrate</a>
+            </div>
         </div>
+        <div id="register-form" style="display: none;">
+            <form id="register">
+                <label for="register-name">Nombre:</label>
+                <input type="text" id="register-name" required>
+                <label for="register-email">Correo electrónico:</label>
+                <input type="email" id="register-email" required>
+                <label for="register-password">Contraseña:</label>
+                <input type="password" id="register-password" required>
+                <label for="register-confirm-password">Confirmar contraseña:</label>
+                <input type="password" id="register-confirm-password" required>
+                <button type="submit">Registrarse</button>
+            </form>
+            <div class="switch-form">
+                <a href="#" id="switch-to-login">¿Ya tienes cuenta? Inicia sesión</a>
+            </div>
+        </div>
+        <div id="error-message"></div>
+        <div id="success-message"></div>
     </div>
 
     <script>
-        const registerForm = document.getElementById('register-form');
         const loginForm = document.getElementById('login-form');
-        const switchToLogin = document.getElementById('switch-to-login');
+        const registerForm = document.getElementById('register-form');
         const switchToRegister = document.getElementById('switch-to-register');
-        const registerError = document.getElementById('register-error');
-        const loginError = document.getElementById('login-error');
+        const switchToLogin = document.getElementById('switch-to-login');
+        const errorMessage = document.getElementById('error-message');
+        const successMessage = document.getElementById('success-message');
 
         // Simular una base de datos de usuarios
         let users = [];
 
-        registerForm.addEventListener('submit', (e) => {
+        switchToRegister.addEventListener('click', (e) => {
             e.preventDefault();
-            const name = document.getElementById('register-name').value;
-            const email = document.getElementById('register-email').value;
-            const password = document.getElementById('register-password').value;
-
-            // Verificar si el correo ya está registrado
-            if (users.some(user => user.email === email)) {
-                registerError.textContent = 'Este correo electrónico ya está registrado.';
-                registerError.style.display = 'block';
-                return;
-            }
-
-            // Agregar el nuevo usuario
-            users.push({ name, email, password });
-            alert('Registro exitoso. Por favor, inicia sesión.');
-            switchToLoginForm();
-            registerForm.reset();
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+            errorMessage.textContent = '';
+            successMessage.textContent = '';
         });
 
-        loginForm.addEventListener('submit', (e) => {
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerForm.style.display = 'none';
+            loginForm.style.display = 'block';
+            errorMessage.textContent = '';
+            successMessage.textContent = '';
+        });
+
+        document.getElementById('login').addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
 
-            // Verificar las credenciales
-            const user = users.find(user => user.email === email && user.password === password);
+            const user = users.find(u => u.email === email && u.password === password);
+
             if (user) {
-                alert(`Bienvenido, ${user.name}!`);
-                // Aquí puedes redirigir al usuario a la página principal
-                // window.location.href = 'pagina_principal.html';
+                successMessage.textContent = 'Inicio de sesión exitoso. Redirigiendo...';
+                errorMessage.textContent = '';
+                setTimeout(() => {
+                    window.location.href = 'https://websim.creation.engine/inicio';
+                }, 2000);
             } else {
-                loginError.textContent = 'Correo electrónico o contraseña incorrectos.';
-                loginError.style.display = 'block';
+                errorMessage.textContent = 'Correo electrónico o contraseña incorrectos';
+                successMessage.textContent = '';
             }
         });
 
-        switchToLogin.addEventListener('click', switchToLoginForm);
-        switchToRegister.addEventListener('click', switchToRegisterForm);
+        document.getElementById('register').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
 
-        function switchToLoginForm() {
-            registerForm.style.display = 'none';
-            loginForm.style.display = 'block';
-            registerError.style.display = 'none';
-            loginError.style.display = 'none';
-        }
+            if (password !== confirmPassword) {
+                errorMessage.textContent = 'Las contraseñas no coinciden';
+                successMessage.textContent = '';
+                return;
+            }
 
-        function switchToRegisterForm() {
-            registerForm.style.display = 'block';
-            loginForm.style.display = 'none';
-            registerError.style.display = 'none';
-            loginError.style.display = 'none';
-        }
+            if (users.some(u => u.email === email)) {
+                errorMessage.textContent = 'Este correo electrónico ya está registrado';
+                successMessage.textContent = '';
+                return;
+            }
+
+            users.push({ name, email, password });
+            successMessage.textContent = 'Registro exitoso. Ahora puedes iniciar sesión.';
+            errorMessage.textContent = '';
+
+            // Limpiar el formulario
+            document.getElementById('register').reset();
+
+            // Cambiar al formulario de inicio de sesión después de un breve retraso
+            setTimeout(() => {
+                registerForm.style.display = 'none';
+                loginForm.style.display = 'block';
+            }, 2000);
+        });
     </script>
 </body></html>
