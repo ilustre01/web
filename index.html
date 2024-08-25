@@ -1,194 +1,23 @@
-<html><head><base href="https://websim.creation.engine/inicio#inicio">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Salón Goss - Inicio</title>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
-
-    :root {
-        --primary-color: #006400;
-        --secondary-color: #004d00;
-        --accent-color: #00ff00;
-        --text-color: #ffffff;
-        --background-color: #1a1a1a;
-        --card-background: #2a2a2a;
-    }
-
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        font-family: 'Montserrat', sans-serif;
-        background-color: var(--background-color);
-        color: var(--text-color);
-        line-height: 1.6;
-    }
-
-    header {
-        background-color: var(--primary-color);
-        padding: 1rem;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-    }
-
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .logo {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--accent-color);
-        text-decoration: none;
-    }
-
-    .nav-links {
-        display: flex;
-        list-style: none;
-    }
-
-    .nav-links li {
-        margin-left: 1.5rem;
-    }
-
-    .nav-links a {
-        color: var(--text-color);
-        text-decoration: none;
-        font-weight: 300;
-        transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-        color: var(--accent-color);
-    }
-
-    main {
-        max-width: 1200px;
-        margin: 6rem auto 2rem;
-        padding: 0 1rem;
-    }
-
-    section {
-        margin-bottom: 4rem;
-    }
-
-    h1, h2 {
-        color: var(--accent-color);
-        margin-bottom: 1rem;
-    }
-
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    h2 {
-        font-size: 2rem;
-    }
-
-    p {
-        margin-bottom: 1rem;
-    }
-
-    .services-grid, .prices-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-    }
-
-    .service-card, .price-card {
-        background-color: var(--card-background);
-        padding: 1.5rem;
-        border-radius: 8px;
-        text-align: center;
-    }
-
-    .service-card img, .price-card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 1rem;
-    }
-
-    .btn {
-        display: inline-block;
-        background-color: var(--primary-color);
-        color: var(--text-color);
-        padding: 0.75rem 1.5rem;
-        text-decoration: none;
-        border-radius: 4px;
-        transition: background-color 0.3s;
-        cursor: pointer;
-    }
-
-    .btn:hover {
-        background-color: var(--secondary-color);
-    }
-
-    footer {
-        background-color: var(--primary-color);
-        color: var(--text-color);
-        text-align: center;
-        padding: 1rem;
-    }
-
-    .whatsapp-btn {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: #25D366;
-        color: white;
-        border-radius: 50%;
-        text-align: center;
-        font-size: 30px;
-        width: 60px;
-        height: 60px;
-        line-height: 60px;
-        box-shadow: 2px 2px 3px #999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
-
-    .whatsapp-btn:hover {
-        background-color: #128C7E;
-    }
-
-    @media (max-width: 768px) {
-        .nav-links {
-            display: none;
-        }
-
-        h1 {
-            font-size: 2rem;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-        }
-    }
-</style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salón Goss - Inicio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <nav>
-            <a href="#inicio" class="logo">Salón Goss</a>
+            <a href="#" class="logo">Salón Goss</a>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#precios">Precios</a></li>
-                <li><a href="https://websim.creation.engine/reserva" id="reserva-btn">Reserva tu cita</a></li>
+                <li><a href="#reserva">Reserva tu cita ahora</a></li>
+                <li><a href="#lista-reservas">Lista de Reservas</a></li>
+
             </ul>
         </nav>
     </header>
@@ -197,29 +26,29 @@
         <section id="inicio">
             <h1>Bienvenidos a Salón Goss</h1>
             <p>En Salón Goss, nos dedicamos a realzar tu belleza natural y a brindarte una experiencia de cuidado personal excepcional. Nuestro equipo de estilistas expertos está listo para transformar tu look y elevar tu confianza.</p>
-            <a href="https://websim.creation.engine/reserva" class="btn" id="reserva-btn-main">Reserva tu cita ahora</a>
+            <a href="https://websim.creation.engine/reserva" class="btn">Reserva tu cita ahora</a>
         </section>
 
         <section id="servicios">
             <h2>Nuestros Servicios</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <img src="https://example.com/corte-cabello.jpg" alt="Corte de cabello elegante" width="250" height="200">
+                    <img src="images/corte-cabello.jpg" alt="Corte de cabello elegante">
                     <h3>Corte de Cabello</h3>
                     <p>Cortes personalizados para hombres y mujeres, adaptados a tu estilo y tipo de cabello.</p>
                 </div>
                 <div class="service-card">
-                    <img src="https://example.com/coloracion.jpg" alt="Coloración de cabello vibrante" width="250" height="200">
+                    <img src="images/coloracion.jpg" alt="Coloración de cabello vibrante">
                     <h3>Coloración</h3>
                     <p>Desde tonos naturales hasta colores vibrantes, nuestros expertos en color harán realidad tu visión.</p>
                 </div>
                 <div class="service-card">
-                    <img src="https://example.com/tratamiento-capilar.jpg" alt="Tratamiento capilar revitalizante" width="250" height="200">
+                    <img src="images/tratamiento-capilar.jpg" alt="Tratamiento capilar revitalizante">
                     <h3>Tratamientos Capilares</h3>
                     <p>Revitaliza y nutre tu cabello con nuestros tratamientos especializados.</p>
                 </div>
                 <div class="service-card">
-                    <img src="https://example.com/maquillaje.jpg" alt="Maquillaje profesional" width="250" height="200">
+                    <img src="images/maquillaje.jpg" alt="Maquillaje profesional">
                     <h3>Maquillaje</h3>
                     <p>Maquillaje profesional para eventos especiales o para tu día a día.</p>
                 </div>
@@ -232,27 +61,63 @@
                 <div class="price-card">
                     <h3>Corte de Cabello</h3>
                     <p>Desde $25</p>
-                    <button class="btn" onclick="reservarServicio('Corte de Cabello')">Reservar</button>
                 </div>
                 <div class="price-card">
                     <h3>Coloración</h3>
                     <p>Desde $50</p>
-                    <button class="btn" onclick="reservarServicio('Coloración')">Reservar</button>
                 </div>
                 <div class="price-card">
                     <h3>Tratamiento Capilar</h3>
                     <p>Desde $35</p>
-                    <button class="btn" onclick="reservarServicio('Tratamiento Capilar')">Reservar</button>
                 </div>
                 <div class="price-card">
                     <h3>Maquillaje</h3>
                     <p>Desde $40</p>
-                    <button class="btn" onclick="reservarServicio('Maquillaje')">Reservar</button>
                 </div>
             </div>
         </section>
     </main>
 
+<section id="reserva">
+            <h2>Reserva tu Cita</h2>
+            <form action="#" method="POST" class="reserva-form">
+                <label for="name">Nombre Completo:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Teléfono:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="service">Servicio:</label>
+                <select id="service" name="service" required>
+                    <option value="corte-cabello">Corte de Cabello</option>
+                    <option value="coloracion">Coloración</option>
+                    <option value="tratamiento-capilar">Tratamiento Capilar</option>
+                    <option value="maquillaje">Maquillaje</option>
+                </select>
+
+                <label for="date">Fecha:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="time">Hora:</label>
+                <input type="time" id="time" name="time" required>
+
+                <button type="submit" class="btn">Enviar Reserva</button>
+            </form>
+        </section>
+    </main>
+
+<section id="lista-reservas">
+            <h2>Lista de Reservas</h2>
+            <ul class="reservas-lista">
+                <!-- Aquí se mostrarán las reservas -->
+            </ul>
+        </section>
+    </main>
+
+   
     <footer>
         <p>&copy; 2024 Salón Goss. Todos los derechos reservados.</p>
     </footer>
@@ -263,7 +128,11 @@
         </svg>
     </a>
 
-    <script>
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+<script>
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -296,27 +165,12 @@
             });
         });
 
-        // Función para manejar la reserva de servicios
-        function reservarServicio(servicio) {
-            alert(`Has seleccionado reservar el servicio: ${servicio}. Te redirigiremos a la página de reservas.`);
-            window.location.href = 'https://websim.creation.engine/reserva';
-        }
-
-        // Manejar el clic en los botones de reserva
-        document.getElementById('reserva-btn').addEventListener('click', function(e) {
+        // Mostrar/Ocultar lista de reservas
+        document.querySelector('.btn[href="#lista-reservas"]').addEventListener('click', function (e) {
             e.preventDefault();
-            window.location.href = 'https://websim.creation.engine/reserva';
-        });
-
-        document.getElementById('reserva-btn-main').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = 'https://websim.creation.engine/reserva';
-        });
-
-        // Manejar el clic en el botón de WhatsApp
-        document.querySelector('.whatsapp-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.open(this.href, '_blank');
+            const listaReservas = document.querySelector('#lista-reservas');
+            listaReservas.classList.toggle('active');
         });
     </script>
-</body></html>
+</body>
+</html>
