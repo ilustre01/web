@@ -1,7 +1,7 @@
-<html><head><base href="https://websim.creation.engine/agregar%20bot%C3%B3n%20de%20precios">
+<html><head><base href="https://websim.creation.engine/agrega%20un%20registro%20para%20que%20los%20usuarios%20se%20puedan%20registrar%20antes%20de%20entrar%20a%20esta%20pagina%20que%20diga%20%20bienvenidos%20a%20sal%C3%B3n%20goss%20que%20los">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Salón Goss - Reservas, Registro y Precios</title>
+<title>Salón Goss - Registro y Bienvenida</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
 
@@ -16,127 +16,85 @@
 
     * {
         box-sizing: border-box;
+        margin: 0;
+        padding: 0;
     }
 
     body {
         font-family: 'Montserrat', sans-serif;
-        margin: 0;
-        padding: 0;
         background-color: var(--background-color);
         color: var(--text-color);
         line-height: 1.6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
     }
 
-    header {
+    .container {
+        background-color: var(--card-background);
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        overflow: hidden;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .welcome-header {
         background-color: var(--primary-color);
         color: var(--text-color);
         text-align: center;
-        padding: 1rem;
-        position: relative;
-    }
-
-    h1, h2 {
-        margin: 0;
-        font-weight: 700;
-        letter-spacing: 2px;
+        padding: 20px;
     }
 
     h1 {
         font-size: 2rem;
+        margin-bottom: 10px;
         text-transform: uppercase;
-        background: linear-gradient(45deg, var(--text-color), var(--accent-color));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
-    nav {
-        background-color: var(--secondary-color);
-        padding: 0.5rem;
-        overflow-x: auto;
-        white-space: nowrap;
+    .welcome-message {
+        font-size: 1rem;
+        margin-bottom: 20px;
     }
 
-    nav ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
+    .form-container {
+        padding: 20px;
     }
 
-    nav ul li {
-        margin-right: 1rem;
-    }
-
-    nav ul li:last-child {
-        margin-right: 0;
-    }
-
-    nav ul li a {
-        color: var(--text-color);
-        text-decoration: none;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        transition: background-color 0.3s, color 0.3s;
-        font-weight: 300;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        display: inline-block;
-    }
-
-    nav ul li a:hover, nav ul li a.active {
-        background-color: var(--primary-color);
-        color: var(--accent-color);
-    }
-
-    main {
-        max-width: 100%;
-        margin: 1rem auto;
-        padding: 1rem;
-    }
-
-    section {
-        background-color: var(--card-background);
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.5);
-        padding: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
+    .form-group {
+        margin-bottom: 20px;
     }
 
     label {
-        margin-top: 1rem;
-        font-weight: 300;
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
     }
 
-    input, select, textarea {
-        padding: 0.5rem;
-        margin-top: 0.25rem;
+    input {
+        width: 100%;
+        padding: 10px;
         border: 1px solid var(--primary-color);
         border-radius: 4px;
         background-color: var(--background-color);
         color: var(--text-color);
         font-family: 'Montserrat', sans-serif;
-        width: 100%;
     }
 
     button {
-        margin-top: 1rem;
-        padding: 0.5rem 1rem;
+        width: 100%;
+        padding: 10px;
         background-color: var(--primary-color);
         color: var(--text-color);
         border: none;
         border-radius: 4px;
         cursor: pointer;
-        transition: background-color 0.3s, transform 0.2s;
         font-family: 'Montserrat', sans-serif;
-        font-weight: 700;
+        font-weight: bold;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        transition: background-color 0.3s, transform 0.2s;
     }
 
     button:hover {
@@ -144,731 +102,142 @@
         transform: scale(1.05);
     }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 1rem;
-        overflow-x: auto;
-        display: block;
-    }
-
-    th, td {
-        border: 1px solid var(--primary-color);
-        padding: 0.5rem;
-        text-align: left;
-    }
-
-    th {
-        background-color: var(--secondary-color);
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    tr:nth-child(even) {
-        background-color: var(--card-background);
-    }
-
-    #reservation-form, #reservations-list, #registration-form, #registered-users, #admin-panel, #contact-form, #prices-section {
+    .error-message {
+        color: #ff0000;
+        margin-top: 10px;
+        text-align: center;
         display: none;
     }
 
-    .active {
-        display: block !important;
+    #login-form {
+        display: none;
     }
 
-    .success-message {
+    .switch-form {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 0.9rem;
+    }
+
+    .switch-form a {
         color: var(--accent-color);
-        margin-top: 1rem;
-        display: none;
-        font-weight: 700;
-        text-align: center;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    #home-button, #admin-login-button, #contact-button, #prices-button {
-        background-color: var(--secondary-color);
-        color: var(--text-color);
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
+        text-decoration: none;
         cursor: pointer;
-        transition: background-color 0.3s, transform 0.2s;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin: 0.5rem;
-        display: inline-block;
     }
 
-    #home-button:hover, #admin-login-button:hover, #contact-button:hover, #prices-button:hover {
-        background-color: var(--primary-color);
-        transform: scale(1.05);
-    }
-
-    .hero-image {
-        width: 100%;
-        height: 200px;
-        background-image: url('https://example.com/salon-image.jpg');
-        background-size: cover;
-        background-position: center;
-        margin-bottom: 1rem;
-        border-radius: 8px;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .hero-image::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(45deg, rgba(0, 100, 0, 0.7), rgba(0, 0, 0, 0.5));
-        border-radius: 8px;
-    }
-
-    .hero-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        color: var(--text-color);
-        font-size: 1.5rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        width: 90%;
-    }
-
-    #admin-login-form {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: var(--card-background);
-        padding: 2rem;
-        border-radius: 8px;
-        box-shadow: 0 0 20px rgba(0,0,0,0.8);
-        z-index: 1000;
-        display: none;
-        width: 90%;
-        max-width: 400px;
-    }
-
-    #admin-login-form h2 {
-        margin-bottom: 1rem;
-    }
-
-    #admin-login-form input {
-        width: 100%;
-        margin-bottom: 1rem;
-    }
-
-    #admin-login-form button {
-        width: 100%;
-    }
-
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.7);
-        z-index: 999;
-        display: none;
-    }
-
-    #prices-table {
-        width: 100%;
-        margin-top: 1rem;
-    }
-
-    #prices-table th, #prices-table td {
-        padding: 0.5rem;
-        text-align: left;
-        border-bottom: 1px solid var(--primary-color);
-    }
-
-    #prices-table th {
-        background-color: var(--secondary-color);
-        color: var(--text-color);
-    }
-
-    @media (min-width: 768px) {
-        main {
-            max-width: 800px;
-            margin: 2rem auto;
-        }
-
-        nav ul {
-            justify-content: center;
-        }
-
-        .hero-image {
-            height: 300px;
-        }
-
-        .hero-text {
-            font-size: 2.5rem;
-        }
-
-        table {
-            display: table;
-        }
-
-        #home-button, #admin-login-button, #contact-button, #prices-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        #home-button {
-            left: 20px;
-        }
-
-        #admin-login-button {
-            right: 20px;
-        }
-
-        #contact-button {
-            right: 150px;
-        }
-
-        #prices-button {
-            right: 280px;
-        }
+    .switch-form a:hover {
+        text-decoration: underline;
     }
 </style>
 </head>
 <body>
-    <header>
-        <button id="home-button">Inicio</button>
-        <h1>Salón Goss</h1>
-        <button id="prices-button">Precios</button>
-        <button id="contact-button">Contacto</button>
-        <button id="admin-login-button">Admin</button>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#" id="new-reservation-link">Nueva Reserva</a></li>
-            <li><a href="#" id="reservations-list-link">Lista de Reservas</a></li>
-            <li><a href="#" id="registration-link">Registro</a></li>
-            <li><a href="#" id="registered-users-link">Usuarios</a></li>
-        </ul>
-    </nav>
-    <main>
-        <div class="hero-image">
-            <div class="hero-text">Bienvenido a Salón Goss</div>
+    <div class="container">
+        <div class="welcome-header">
+            <h1>Salón Goss</h1>
+            <p class="welcome-message">Bienvenidos a Salón Goss</p>
         </div>
-        <section id="reservation-form">
-            <h2>Reserva tu cita</h2>
-            <form id="new-reservation-form">
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="phone">Teléfono:</label>
-                <input type="tel" id="phone" name="phone" required>
-
-                <label for="service">Servicio:</label>
-                <select id="service" name="service" required>
-                    <option value="">Selecciona un servicio</option>
-                    <option value="corte">Corte de pelo</option>
-                    <option value="color">Tinte</option>
-                    <option value="peinado">Peinado</option>
-                    <option value="tratamiento">Tratamiento capilar</option>
-                </select>
-
-                <label for="date">Fecha:</label>
-                <input type="date" id="date" name="date" required>
-
-                <label for="time">Hora:</label>
-                <input type="time" id="time" name="time" required>
-
-                <button type="submit">Reservar cita</button>
-            </form>
-            <div id="reservation-success" class="success-message">
-                ¡Tu cita ha sido reservada con éxito!
-            </div>
-        </section>
-
-        <section id="reservations-list">
-            <h2>Lista de Reservas</h2>
-            <div style="overflow-x: auto;">
-                <table id="reservations-table">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Teléfono</th>
-                            <th>Servicio</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Las reservas se agregarán aquí dinámicamente -->
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="registration-form">
-            <h2>Registro de Usuario</h2>
-            <form id="new-user-form">
-                <label for="reg-name">Nombre:</label>
-                <input type="text" id="reg-name" name="reg-name" required>
-
-                <label for="reg-phone">Número de teléfono:</label>
-                <input type="tel" id="reg-phone" name="reg-phone" required>
-
-                <label for="reg-password">Contraseña:</label>
-                <input type="password" id="reg-password" name="reg-password" required>
-
-                <label for="reg-confirm-password">Confirmar Contraseña:</label>
-                <input type="password" id="reg-confirm-password" name="reg-confirm-password" required>
-
+        <div class="form-container">
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="register-name">Nombre:</label>
+                    <input type="text" id="register-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Correo electrónico:</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Contraseña:</label>
+                    <input type="password" id="register-password" required>
+                </div>
                 <button type="submit">Registrarse</button>
-            </form>
-            <div id="registration-success" class="success-message">
-                ¡Te has registrado con éxito!
-            </div>
-        </section>
-
-        <section id="registered-users">
-            <h2>Usuarios Registrados</h2>
-            <div style="overflow-x: auto;">
-                <table id="users-table">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Número de teléfono</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Los usuarios registrados se agregarán aquí dinámicamente -->
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="admin-panel">
-            <h2>Panel de Administración</h2>
-            <h3>Editar contenido del sitio</h3>
-            <form id="edit-content-form">
-                <label for="hero-text">Texto del héroe:</label>
-                <input type="text" id="hero-text" name="hero-text">
-
-                <label for="site-description">Descripción del sitio:</label>
-                <textarea id="site-description" name="site-description" rows="4"></textarea>
-
-                <label for="services">Servicios (separados por comas):</label>
-                <input type="text" id="services" name="services">
-
-                <button type="submit">Guardar cambios</button>
+                <p class="error-message" id="register-error"></p>
+                <div class="switch-form">
+                    <p>¿Ya tienes una cuenta? <a id="switch-to-login">Iniciar sesión</a></p>
+                </div>
             </form>
 
-            <h3>Gestionar reservas</h3>
-            <div style="overflow-x: auto;">
-                <table id="admin-reservations-table">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Teléfono</th>
-                            <th>Servicio</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Las reservas se agregarán aquí dinámicamente -->
-                    </tbody>
-                </table>
-            </div>
-
-            <h3>Gestionar usuarios</h3>
-            <div style="overflow-x: auto;">
-                <table id="admin-users-table">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Número de teléfono</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Los usuarios se agregarán aquí dinámicamente -->
-                    </tbody>
-                </table>
-            </div>
-
-            <h3>Gestionar precios</h3>
-            <form id="edit-prices-form">
-                <label for="edit-corte">Corte de pelo:</label>
-                <input type="number" id="edit-corte" name="edit-corte" min="0" step="0.01" required>
-
-                <label for="edit-color">Tinte:</label>
-                <input type="number" id="edit-color" name="edit-color" min="0" step="0.01" required>
-
-                <label for="edit-peinado">Peinado:</label>
-                <input type="number" id="edit-peinado" name="edit-peinado" min="0" step="0.01" required>
-
-                <label for="edit-tratamiento">Tratamiento capilar:</label>
-                <input type="number" id="edit-tratamiento" name="edit-tratamiento" min="0" step="0.01" required>
-
-                <button type="submit">Actualizar precios</button>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Correo electrónico:</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Contraseña:</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit">Iniciar sesión</button>
+                <p class="error-message" id="login-error"></p>
+                <div class="switch-form">
+                    <p>¿No tienes una cuenta? <a id="switch-to-register">Registrarse</a></p>
+                </div>
             </form>
-        </section>
-
-        <section id="contact-form">
-            <h2>Contacto</h2>
-            <form id="contact-us-form">
-                <label for="contact-name">Nombre:</label>
-                <input type="text" id="contact-name" name="contact-name" required>
-
-                <label for="contact-phone">Número de teléfono:</label>
-                <input type="tel" id="contact-phone" name="contact-phone" required>
-
-                <label for="contact-subject">Asunto:</label>
-                <input type="text" id="contact-subject" name="contact-subject" required>
-
-                <label for="contact-message">Mensaje:</label>
-                <textarea id="contact-message" name="contact-message" rows="4" required></textarea>
-
-                <button type="submit">Enviar mensaje</button>
-            </form>
-            <div id="contact-success" class="success-message">
-                ¡Tu mensaje ha sido enviado con éxito!
-            </div>
-        </section>
-
-        <section id="prices-section">
-            <h2>Lista de Precios</h2>
-            <table id="prices-table">
-                <thead>
-                    <tr>
-                        <th>Servicio</th>
-                        <th>Precio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Corte de pelo</td>
-                        <td id="price-corte">$20.00</td>
-                    </tr>
-                    <tr>
-                        <td>Tinte</td>
-                        <td id="price-color">$50.00</td>
-                    </tr>
-                    <tr>
-                        <td>Peinado</td>
-                        <td id="price-peinado">$30.00</td>
-                    </tr>
-                    <tr>
-                        <td>Tratamiento capilar</td>
-                        <td id="price-tratamiento">$40.00</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-    </main>
-
-    <div id="admin-login-form">
-        <h2>Iniciar sesión como administrador</h2>
-        <form id="admin-login">
-            <label for="admin-username">Usuario:</label>
-            <input type="text" id="admin-username" name="admin-username" required>
-
-            <label for="admin-password">Contraseña:</label>
-            <input type="password" id="admin-password" name="admin-password" required>
-
-            <button type="submit">Iniciar sesión</button>
-        </form>
+        </div>
     </div>
 
-    <div class="overlay"></div>
-
     <script>
-        let reservations = [];
+        const registerForm = document.getElementById('register-form');
+        const loginForm = document.getElementById('login-form');
+        const switchToLogin = document.getElementById('switch-to-login');
+        const switchToRegister = document.getElementById('switch-to-register');
+        const registerError = document.getElementById('register-error');
+        const loginError = document.getElementById('login-error');
+
+        // Simular una base de datos de usuarios
         let users = [];
-        let isAdminLoggedIn = false;
-        let prices = {
-            corte: 20.00,
-            color: 50.00,
-            peinado: 30.00,
-            tratamiento: 40.00
-        };
 
-        function showSection(sectionId) {
-            document.querySelectorAll('main > section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(sectionId).classList.add('active');
-            
-            document.querySelectorAll('nav a').forEach(link => {
-                link.classList.remove('active');
-            });
-            if (sectionId !== 'reservation-form' && sectionId !== 'admin-panel' && sectionId !== 'contact-form' && sectionId !== 'prices-section') {
-                document.querySelector(`nav a[href="#"][id="${sectionId}-link"]`).classList.add('active');
-            }
-        }
-
-        document.getElementById('new-reservation-link').addEventListener('click', (e) => {
+        registerForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            showSection('reservation-form');
-        });
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
 
-        document.getElementById('reservations-list-link').addEventListener('click', (e) => {
-            e.preventDefault();
-            showSection('reservations-list');
-            updateReservationsList();
-        });
-
-        document.getElementById('registration-link').addEventListener('click', (e) => {
-            e.preventDefault();
-            showSection('registration-form');
-        });
-
-        document.getElementById('registered-users-link').addEventListener('click', (e) => {
-            e.preventDefault();
-            showSection('registered-users');
-            updateUsersList();
-        });
-
-        document.getElementById('new-reservation-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const newReservation = {
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                service: document.getElementById('service').value,
-                date: document.getElementById('date').value,
-                time: document.getElementById('time').value
-            };
-
-            reservations.push(newReservation);
-            
-            document.getElementById('reservation-success').style.display = 'block';
-            this.reset();
-
-            setTimeout(() => {
-                document.getElementById('reservation-success').style.display = 'none';
-            }, 3000);
-        });
-
-        document.getElementById('new-user-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            if (document.getElementById('reg-password').value !== document.getElementById('reg-confirm-password').value) {
-                alert('Las contraseñas no coinciden');
+            // Verificar si el correo ya está registrado
+            if (users.some(user => user.email === email)) {
+                registerError.textContent = 'Este correo electrónico ya está registrado.';
+                registerError.style.display = 'block';
                 return;
             }
 
-            const newUser = {
-                name: document.getElementById('reg-name').value,
-                phone: document.getElementById('reg-phone').value
-            };
-
-            users.push(newUser);
-            
-            document.getElementById('registration-success').style.display = 'block';
-            this.reset();
-
-            setTimeout(() => {
-                document.getElementById('registration-success').style.display = 'none';
-            }, 3000);
+            // Agregar el nuevo usuario
+            users.push({ name, email, password });
+            alert('Registro exitoso. Por favor, inicia sesión.');
+            switchToLoginForm();
+            registerForm.reset();
         });
 
-        function updateReservationsList() {
-            const tableBody = document.querySelector('#reservations-table tbody');
-            tableBody.innerHTML = '';
-
-            reservations.forEach(reservation => {
-                const row = tableBody.insertRow();
-                row.insertCell(0).textContent = reservation.name;
-                row.insertCell(1).textContent = reservation.phone;
-                row.insertCell(2).textContent = reservation.service;
-                row.insertCell(3).textContent = reservation.date;
-                row.insertCell(4).textContent = reservation.time;
-            });
-        }
-
-        function updateUsersList() {
-            const tableBody = document.querySelector('#users-table tbody');
-            tableBody.innerHTML = '';
-
-            users.forEach(user => {
-                const row = tableBody.insertRow();
-                row.insertCell(0).textContent = user.name;
-                row.insertCell(1).textContent = user.phone;
-            });
-        }
-
-        // Mostrar el formulario de reserva por defecto
-        showSection('reservation-form');
-
-        // Agregar funcionalidad al botón de inicio
-        document.getElementById('home-button').addEventListener('click', () => {
-            showSection('reservation-form');
-        });
-
-        // Funcionalidad para el botón de admin
-        document.getElementById('admin-login-button').addEventListener('click', () => {
-            document.getElementById('admin-login-form').style.display = 'block';
-            document.querySelector('.overlay').style.display = 'block';
-        });
-
-        document.getElementById('admin-login').addEventListener('submit', function(e) {
+        loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const username = document.getElementById('admin-username').value;
-            const password = document.getElementById('admin-password').value;
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
 
-            // Aquí deberías implementar una autenticación real
-            if (username === 'admin' && password === 'password') {
-                isAdminLoggedIn = true;
-                document.getElementById('admin-login-form').style.display = 'none';
-                document.querySelector('.overlay').style.display = 'none';
-                showSection('admin-panel');
-                updateAdminPanel();
+            // Verificar las credenciales
+            const user = users.find(user => user.email === email && user.password === password);
+            if (user) {
+                alert(`Bienvenido, ${user.name}!`);
+                // Aquí puedes redirigir al usuario a la página principal
+                // window.location.href = 'pagina_principal.html';
             } else {
-                alert('Usuario o contraseña incorrectos');
+                loginError.textContent = 'Correo electrónico o contraseña incorrectos.';
+                loginError.style.display = 'block';
             }
         });
 
-        function updateAdminPanel() {
-            // Actualizar la tabla de reservas en el panel de administración
-            const adminReservationsTable = document.querySelector('#admin-reservations-table tbody');
-            adminReservationsTable.innerHTML = '';
+        switchToLogin.addEventListener('click', switchToLoginForm);
+        switchToRegister.addEventListener('click', switchToRegisterForm);
 
-            reservations.forEach((reservation, index) => {
-                const row = adminReservationsTable.insertRow();
-                row.insertCell(0).textContent = reservation.name;
-                row.insertCell(1).textContent = reservation.phone;
-                row.insertCell(2).textContent = reservation.service;
-                row.insertCell(3).textContent = reservation.date;
-                row.insertCell(4).textContent = reservation.time;
-                
-                const actionsCell = row.insertCell(5);
-                const deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Eliminar';
-                deleteButton.addEventListener('click', () => {
-                    reservations.splice(index, 1);
-                    updateAdminPanel();
-                });
-                actionsCell.appendChild(deleteButton);
-            });
-
-            // Actualizar la tabla de usuarios en el panel de administración
-            const adminUsersTable = document.querySelector('#admin-users-table tbody');
-            adminUsersTable.innerHTML = '';
-
-            users.forEach((user, index) => {
-                const row = adminUsersTable.insertRow();
-                row.insertCell(0).textContent = user.name;
-                row.insertCell(1).textContent = user.phone;
-                
-                const actionsCell = row.insertCell(2);
-                const deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Eliminar';
-                deleteButton.addEventListener('click', () => {
-                    users.splice(index, 1);
-                    updateAdminPanel();
-                });
-                actionsCell.appendChild(deleteButton);
-            });
-
-            // Actualizar los campos de precios en el formulario de edición
-            document.getElementById('edit-corte').value = prices.corte;
-            document.getElementById('edit-color').value = prices.color;
-            document.getElementById('edit-peinado').value = prices.peinado;
-            document.getElementById('edit-tratamiento').value = prices.tratamiento;
+        function switchToLoginForm() {
+            registerForm.style.display = 'none';
+            loginForm.style.display = 'block';
+            registerError.style.display = 'none';
+            loginError.style.display = 'none';
         }
 
-        document.getElementById('edit-content-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const heroText = document.getElementById('hero-text').value;
-            const siteDescription = document.getElementById('site-description').value;
-            const services = document.getElementById('services').value.split(',').map(service => service.trim());
-
-            // Actualizar el texto del héroe
-            document.querySelector('.hero-text').textContent = heroText;
-
-            // Actualizar la descripción del sitio (asumiendo que tienes un elemento para esto)
-            // document.getElementById('site-description-element').textContent = siteDescription;
-
-            // Actualizar los servicios en el formulario de reserva
-            const serviceSelect = document.getElementById('service');
-            serviceSelect.innerHTML = '<option value="">Selecciona un servicio</option>';
-            services.forEach(service => {
-                const option = document.createElement('option');
-                option.value = service.toLowerCase().replace(/\s+/g, '-');
-                option.textContent = service;
-                serviceSelect.appendChild(option);
-            });
-
-            alert('Cambios guardados con éxito');
-        });
-
-        // Cerrar el formulario de login y el overlay al hacer clic fuera
-        document.querySelector('.overlay').addEventListener('click', () => {
-            document.getElementById('admin-login-form').style.display = 'none';
-            document.querySelector('.overlay').style.display = 'none';
-        });
-
-        // Funcionalidad para el botón de contacto
-        document.getElementById('contact-button').addEventListener('click', () => {
-            showSection('contact-form');
-        });
-
-        // Manejar el envío del formulario de contacto
-        document.getElementById('contact-us-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Aquí deberías implementar la lógica para enviar el mensaje de contacto
-            // Por ahora, solo mostraremos un mensaje de éxito
-            
-            document.getElementById('contact-success').style.display = 'block';
-            this.reset();
-
-            setTimeout(() => {
-                document.getElementById('contact-success').style.display = 'none';
-            }, 3000);
-        });
-
-        // Funcionalidad para el botón de precios
-        document.getElementById('prices-button').addEventListener('click', () => {
-            showSection('prices-section');
-            updatePricesTable();
-        });
-
-        function updatePricesTable() {
-            document.getElementById('price-corte').textContent = `$${prices.corte.toFixed(2)}`;
-            document.getElementById('price-color').textContent = `$${prices.color.toFixed(2)}`;
-            document.getElementById('price-peinado').textContent = `$${prices.peinado.toFixed(2)}`;
-            document.getElementById('price-tratamiento').textContent = `$${prices.tratamiento.toFixed(2)}`;
+        function switchToRegisterForm() {
+            registerForm.style.display = 'block';
+            loginForm.style.display = 'none';
+            registerError.style.display = 'none';
+            loginError.style.display = 'none';
         }
-
-        // Manejar la actualización de precios desde el panel de administración
-        document.getElementById('edit-prices-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            prices.corte = parseFloat(document.getElementById('edit-corte').value);
-            prices.color = parseFloat(document.getElementById('edit-color').value);
-            prices.peinado = parseFloat(document.getElementById('edit-peinado').value);
-            prices.tratamiento = parseFloat(document.getElementById('edit-tratamiento').value);
-
-            updatePricesTable();
-            alert('Precios actualizados con éxito');
-        });
-
-        // Inicializar la tabla de precios
-        updatePricesTable();
     </script>
 </body></html>
