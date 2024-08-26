@@ -107,16 +107,21 @@
                 <button type="submit" class="btn">Enviar Reserva</button>
             </form>
         </section>
-    </main>
 
-<section id="lista-reservas">
+        <section id="lista-reservas">
             <h2>Lista de Reservas</h2>
             <ul class="reservas-lista">
                 <!-- Aquí se mostrarán las reservas -->
             </ul>
         </section>
-    </main>
-
+<section id="contacto">
+    <h2>Contacto y Dirección</h2>
+    <p>Puedes encontrarnos en:</p>
+    <p><strong>Dirección:</strong> Calle Santa Catalina, Habana, Cuba</p>
+    <p><strong>Teléfono:</strong> +5353160585</p>
+    <p><strong>Email:</strong> contacto@salongoss.com</p>
+    <p>¡Estamos aquí para ayudarte a lucir y sentirte genial!</p>
+</section>
    
     <footer>
         <p>&copy; 2024 Salón Goss. Todos los derechos reservados.</p>
@@ -128,11 +133,7 @@
         </svg>
     </a>
 
-    <script src="scripts.js"></script>
-</body>
-</html>
-
-<script>
+    <script>
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -165,12 +166,38 @@
             });
         });
 
-        // Mostrar/Ocultar lista de reservas
-        document.querySelector('.btn[href="#lista-reservas"]').addEventListener('click', function (e) {
+        // Manejo de la reserva
+        document.querySelector('.reserva-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            const listaReservas = document.querySelector('#lista-reservas');
-            listaReservas.classList.toggle('active');
+            
+            // Capturar los datos del formulario
+            const name = document.querySelector('#name').value;
+            const email = document.querySelector('#email').value;
+            const phone = document.querySelector('#phone').value;
+            const service = document.querySelector('#service').value;
+            const date = document.querySelector('#date').value;
+            const time = document.querySelector('#time').value;
+
+            // Crear un nuevo elemento en la lista de reservas
+            const listaReservas = document.querySelector('.reservas-lista');
+            const reservaItem = document.createElement('li');
+            reservaItem.innerHTML = `
+                <strong>Nombre:</strong> ${name}<br>
+                <strong>Email:</strong> ${email}<br>
+                <strong>Teléfono:</strong> ${phone}<br>
+                <strong>Servicio:</strong> ${service}<br>
+                <strong>Fecha:</strong> ${date}<br>
+                <strong>Hora:</strong> ${time}
+            `;
+            listaReservas.appendChild(reservaItem);
+
+            // Enviar mensaje por WhatsApp
+            const message = `Nombre: ${name}\nEmail: ${email}\nTeléfono: ${phone}\nServicio: ${service}\nFecha: ${date}\nHora: ${time}`;
+            window.open(`https://wa.me/5353160585?text=${encodeURIComponent(message)}`, '_blank');
+
+            // Limpiar el formulario después de enviar la reserva
+            document.querySelector('.reserva-form').reset();
         });
     </script>
 </body>
-</html>
+
